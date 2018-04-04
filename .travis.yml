@@ -9,6 +9,7 @@ addons:
     - libboost-dev
     - protobuf-compiler
     - libprotobuf-dev
+    - libnl-3-dev
     
 script:
 - cmake .
