@@ -8,6 +8,7 @@ addons:
     - cmake
     - libboost-dev
     - protobuf-compiler
+    - libprotobuf-dev
     
 script:
 - cmake .
