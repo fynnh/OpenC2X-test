@@ -6,7 +6,7 @@ addons:
   apt:
     packages:
     - cmake
-    - libboost-dev
+    - libboost-all-dev
     - protobuf-compiler
     - libprotobuf-dev
     - libnl-3-dev
