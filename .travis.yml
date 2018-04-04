@@ -1,0 +1,8 @@
+dist: trusty
+language: cpp
+compiler: gcc
+
+script:
+- cmake .
+- make
+- make package
