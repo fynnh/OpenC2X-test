@@ -1,0 +1,7 @@
+package its;
+
+import "ProtectedCommunicationZone.proto";
+
+message RsuHighFreqContainer {
+	repeated its.ProtectedCommunicationZone protectedCommZone = 1;
+}

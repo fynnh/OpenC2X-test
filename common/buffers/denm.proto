@@ -1,0 +1,8 @@
+package denmPackage;
+import "ItsPduHeader.proto";
+import "DENMessage.proto";
+
+message DENM {
+	required its.ItsPduHeader header = 1;
+	required its.DENMessage msg= 2;
+}

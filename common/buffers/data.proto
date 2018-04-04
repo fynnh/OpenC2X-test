@@ -1,0 +1,22 @@
+package dataPackage;
+
+message DATA {
+	 enum Type {
+		CAM = 1;
+		DENM = 2;
+	 }
+	 enum Priority {
+		BK = 1;
+		BE = 0;
+		VI = 4;
+		VO = 6;
+	 }
+	required int32 id = 1;
+	required Type type = 2;
+	required Priority priority = 3;
+	optional int64 createTime = 4;
+	optional int64 validUntil = 5;
+	optional double txPower = 6;
+	optional double bitRate = 7;
+	required bytes content = 8;
+}
