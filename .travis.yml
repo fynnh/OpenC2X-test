@@ -17,5 +17,5 @@ addons:
     
 script:
 - cmake .
-- make
+- make -j1
 - make package
