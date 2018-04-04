@@ -13,6 +13,7 @@ addons:
     - libnl-genl-3-dev
     - libnl-route-3-dev
     - asn1c
+    - libzmq3-dev
     
 script:
 - cmake .
