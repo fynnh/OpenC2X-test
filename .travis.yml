@@ -2,7 +2,6 @@ sudo: required
 dist: trusty
 language: cpp
 compiler: gcc
-
 addons:
   apt:
     packages:
@@ -20,8 +19,16 @@ before_install:
 - wget https://github.com/fynnh/libubox/releases/download/untagged-2f3d0fb32fe4d665624f/ubox-1.0-Linux.deb
 - sudo dpkg -i ubox-1.0-Linux.deb
 - wget https://github.com/fynnh/uci/releases/download/untagged-441737d84af1837cd4d7/uci-1.0-Linux.deb
-- sudo dpkg -i uci-1.0-Linux.deb 
+- sudo dpkg -i uci-1.0-Linux.deb
 script:
 - cmake .
 - make -j1
 - make package
+deploy:
+  provider: releases
+  api_key:
+    secure: MiezF0J72QZmu/S0EJEFLi4bus5O5ktzpzVZGW++btBA92NfukUo8uFiR7Dq7L8Qg4omrM2auq8SMsyyys8p+QXAI+iezgzR6UKnbD1tayNsgR+n/OL00cY24YGdAnyhyNkCk/vimit+bEqFqg/H9UrXpPh2yZBHtNucSWeB4kAb5RlQIw8ghPDYZXfEs73ONWVcUOBGFK7sT3Ij4pbqTvqOBZ6vkXevIYQpk/KQKkEt3kHe3ghqHC1LuMQ/Lw8UodYOvf+nE4RFtEi4mbD63c9QXM9n8boqq/M7iUU5MaiiUhPAcuGWp81FSW+8ZHhVFDYgOS9VrcGcycfSA8Fdew8DljwnedEKZzvsHQohPtu3Frc6BK/1KynT9aokCGbnK9DYDrtW6wJHl3vKSIWpkK6KlUKUYapkwywhcFo6klCp8/E9sRmSqanCrKAhObHXulzpR3of4lfhhsA6xck53rELcmxwpxYIPLxu2P/WOWca92h30riPpnO4voXRXZ7wtfVZIgPzYv2WvlWGb3APGvVzlr9+142q+UjkWkCmwOz7Qdug9Q4+735DUULyd7VpsOGBieAonk0+cIRndbRbbw+JCUcMKDJxmD/kfEjoANcRTX2Z8WkAmoHh+ysUepgFCbPncatyAtw8hV+m1ddgI8aUgL8ms3WHa+OjcH1oT0A=
+  file: openc2x-1.2-Linux.deb
+  skip_cleanup: true
+  on:
+    all_branches: true
