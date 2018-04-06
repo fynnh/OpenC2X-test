@@ -32,8 +32,10 @@
 #include <boost/thread.hpp>
 #include <boost/asio.hpp>
 #include <common/utility/LoggingUtility.h>
+#if defined(__has_include)
 #if __has_include("netlink/netlink.h")
 #include <netlink/netlink.h>
+#endif
 #endif
 #include <netlink/netlink-kernel.h>
 #include <netlink/socket.h>
