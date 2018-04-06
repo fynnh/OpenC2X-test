@@ -1,3 +1,4 @@
+sudo: required
 dist: trusty
 language: cpp
 compiler: gcc
@@ -14,7 +15,11 @@ addons:
     - libnl-route-3-dev
     - asn1c
     - libzmq3-dev
-    
+before_install:
+- wget https://github.com/fynnh/libubox/releases/download/untagged-2f3d0fb32fe4d665624f/ubox-1.0-Linux.deb
+- sudo dpkg -i ubox-1.0-Linux.deb
+- wget https://github.com/fynnh/uci/releases/download/untagged-441737d84af1837cd4d7/uci-1.0-Linux.deb
+- sudo dpkg -i uci-1.0-Linux.deb 
 script:
 - cmake .
 - make -j1
