@@ -21,9 +21,11 @@ before_install:
 - wget https://github.com/fynnh/uci/releases/download/untagged-441737d84af1837cd4d7/uci-1.0-Linux.deb
 - sudo dpkg -i uci-1.0-Linux.deb
 script:
-- cmake .
+- export DATE=$(date +'%Y%m%d%H%M%S')
+- cmake . -DMINOR="${DATE}"
 - make -j1
 - make package
+- git tag "${DATE}"
 
 deploy:
   - provider: releases
