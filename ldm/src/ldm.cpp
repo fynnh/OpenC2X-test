@@ -34,8 +34,7 @@ using namespace std;
 
 INITIALIZE_EASYLOGGINGPP
 
-LDM::LDM(string globalConfig, string loggingConf, string statisticConf) {
-
+LDM::LDM() {
 	GlobalConfig config;
 	try {
 		config.loadConfig(LDM_CONFIG_NAME);
@@ -802,20 +801,8 @@ void LDM::receiveCamInfo() {
 }
 
 int main(int argc, const char* argv[]) {
-	
-	string globalConfigPath = "/etc/openc2x/config.xml";
-	string loggingConfPath = "/etc/openc2x/ldm/logging.conf";
-	string statisticConfPath = "/etc/openc2x/ldm/statistics.conf";
-	
-	if(argc != 4) {
-		fprintf(stderr, "missing arguments: %s <globalConfig.xml> <logging.conf> <statistics.conf> \n", argv[0]);
-	}else{
-		globalConfigPath = argv[1];
-		loggingConfPath = argv[2];
-		statisticConfPath = argv[3];
-	}
 
-	LDM ldm(globalConfigPath, loggingConfPath, statisticConfPath);
+	LDM ldm;
 	ldm.init();
 
 	return EXIT_SUCCESS;

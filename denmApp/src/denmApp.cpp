@@ -30,7 +30,7 @@ using namespace std;
 
 INITIALIZE_EASYLOGGINGPP
 
-DenmApp::DenmApp(std::string globalConfig, std::string loggingConf, std::string statisticConf) {
+DenmApp::DenmApp() {
 	GlobalConfig config;
 	try {
 		config.loadConfig(DENM_CONFIG_NAME);
@@ -61,19 +61,8 @@ void DenmApp::triggerDenm(string content) {
 
 
 int main(int argc, const char* argv[]) {
-	
-	string globalConfigPath = "/etc/openc2x/config.xml";
-	string loggingConfPath = "/etc/openc2x/denmApp/logging.conf";
-	string statisticConfPath = "/etc/openc2x/denmApp/statistics.conf";	
-	
-	if(argc != 4) {
-		fprintf(stderr, "missing arguments: %s <globalConfig.xml> <logging.conf> <statistics.conf> \n", argv[0]);
-	}else{
-		globalConfigPath = argv[1];
-		loggingConfPath = argv[2];
-		statisticConfPath = argv[3];
-	}
-	DenmApp denmApp(globalConfigPath, loggingConfPath, statisticConfPath);
+
+	DenmApp denmApp;
 
 	usleep(200*1000);	//FIXME: zmq seems to need some time for setup => doesn't send without sleep
 

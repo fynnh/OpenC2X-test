@@ -20,12 +20,7 @@
 // Jan Tiemann <janhentie@web.de>
 
 
-//#include <boost/property_tree/ptree.hpp>
-//#include <boost/property_tree/xml_parser.hpp>
-
-
-
-
+#include <boost/property_tree/ptree.hpp>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <ios>
@@ -35,7 +30,7 @@
 #include <string.h>
 #include <uci.h>
 #include <algorithm>
-#include <boost/property_tree/ptree.hpp>
+
 
 using boost::property_tree::ptree;
 
@@ -300,7 +295,6 @@ struct GlobalConfig {
 			exit(1);
 		}
 		if(mStationID == 0){
-			//TODO has to be removed?
 			mStationID = stringToMac32(mMac);
 			std::cout << "The identified mac as integer: " << std::to_string(mStationID) << std::endl;
 		}

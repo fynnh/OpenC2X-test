@@ -1,12 +1,5 @@
 #find_package(NLGENL_LIBRARY REQUIRED HINTS /usr/include/libnl3)
 
-#include_directories(
-#    /usr/include/libnl3
-#)
-
-#add_executable (dcc ${dcc_SRCS})
-#target_link_libraries (dcc zmq protobuf boost_system boost_thread nl-3 nl-genl-3 asn proto messages utility)
-
 
 set(dcc_SRCS
    ChannelProber.cpp

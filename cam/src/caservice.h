@@ -90,7 +90,7 @@ struct CaServiceConfig {
  */
 class CaService {
 public:
-	CaService(CaServiceConfig &config, ptree& configTree, std::string loggingConf, std::string statisticConf);
+	CaService(CaServiceConfig &config, ptree& configTree);
 	~CaService();
 
 	/** Sends a new CAM to LDM and DCC.	 */

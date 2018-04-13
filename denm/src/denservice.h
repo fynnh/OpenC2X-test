@@ -50,7 +50,7 @@
  */
 class DenService {
 public:
-	DenService(std::string globalConfig, std::string loggingConf, std::string statisticConf);
+	DenService();
 	~DenService();
 
 	/**

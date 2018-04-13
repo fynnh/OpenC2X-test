@@ -21,7 +21,7 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/common/utility/external/
     ${PROJECT_SOURCE_DIR}/common/config/
     ${PROJECT_BINARY_DIR}
-	${PROJECT_BINARY_DIR}/common/asn1/
+    ${PROJECT_BINARY_DIR}/common/asn1/
 
 )
 
@@ -41,7 +41,6 @@ add_subdirectory(ldm)
 add_subdirectory(httpServer)
 add_subdirectory(config)
 add_subdirectory(scripts)
-#add_subdirectory(test)
 
 ADD_CUSTOM_TARGET(
     config ALL COMMENT "Installing Recource-Files into Builddirectory"

@@ -51,7 +51,7 @@
 struct httpServerConfig {
 	int mTimeout;
 
-	void loadConfigXML(const std::string &filename) {
+	void loadConfig() {
 		ptree pt = load_config_tree();
 		mTimeout = pt.get("httpServer.timeout", 100);
 	}
@@ -65,7 +65,7 @@ struct httpServerConfig {
 class httpServer {
 public:
 
-	httpServer(GlobalConfig config, std::string serverConfig, std::string loggingConf, std::string statisticConf);
+	httpServer(GlobalConfig config);
 	virtual ~httpServer();
 
 	/** Gets CAMs from LDM and converts them to JSON.

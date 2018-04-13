@@ -61,13 +61,11 @@ struct GpsConfig {
 	int mMode;
 
 
-	void loadConfigXML(const std::string &filename) {
-		
+	void loadConfig() {
 		ptree pt = load_config_tree();
 		mSimulateData = pt.get("gps.simulateData", true);
 		mGpsDataFile = pt.get("gps.dataFile", "");
 		mMode = pt.get("gps.simulationMode", 0);
-		
 	}
 };
 
@@ -78,7 +76,7 @@ typedef struct std::pair<double, double> position;
  */
 class GpsService {
 public:
-	GpsService(GpsConfig &config, std::string globalConfig, std::string loggingConf, std::string statisticConf);
+	GpsService(GpsConfig &config);
 	~GpsService();
 
 	/** Connects to GPSd.

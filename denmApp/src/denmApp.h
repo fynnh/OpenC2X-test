@@ -37,7 +37,7 @@
  */
 class DenmApp {
 public:
-	DenmApp(std::string globalConfig, std::string loggingConf, std::string statisticConf);
+	DenmApp();
 	~DenmApp();
 
 	/*

@@ -1,10 +1,20 @@
-CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Testing
-Makefile
-cmake_install.cmake
-install_manifest.txt
-compile_commands.json
-CTestTestfile.cmake
-build/
+#ignore build folders
+**/build
+**/Debug
+
+#ignore workspace files
+.metadata
+
+#ignore temp files
+*~
+
+#logs
+*.log
+*.csv
+*.interLog
+
+#stuff
+**/.settings/language.settings.xml
+.directory
+*.db
+documentation/html

@@ -38,7 +38,7 @@ using namespace std;
 
 INITIALIZE_EASYLOGGINGPP
 
-CaService::CaService(CaServiceConfig &config, ptree& configTree, string loggingConf, string statisticConf) {
+CaService::CaService(CaServiceConfig &config, ptree& configTree) {
 	
 	try {
 		mGlobalConfig.loadConfig(CAM_CONFIG_NAME);
@@ -575,19 +575,6 @@ camPackage::CAM CaService::convertAsn1toProtoBuf(CAM_t* cam) {
 
 int main(int argc, const char* argv[]) {
 	
-	string globalConfigPath = "/etc/openc2x/config.xml";
-	string configPath= "/etc/openc2x/cam/config.xml";
-	string loggingConfPath = "/etc/openc2x/cam/logging.conf";
-	string statisticConfPath = "/etc/openc2x/cam/statistics.conf";
-	
-	if(argc != 5) {
-		fprintf(stderr, "missing arguments: %s <globalConfig.xml> <camConfig.xml> <logging.conf> <statistics.conf> \n use default\n", argv[0]);
-	}else{
-		globalConfigPath = argv[1];
-		configPath= argv[2];
-		loggingConfPath = argv[3];
-		statisticConfPath = argv[4];
-	}
 	ptree configTree = load_config_tree();
 	CaServiceConfig caConfig;
 	try {
@@ -597,7 +584,7 @@ int main(int argc, const char* argv[]) {
 		cerr << "Error while loading config.xml: " << e.what() << endl << flush;
 		return EXIT_FAILURE;
 	}
-	CaService cam(caConfig, configTree, loggingConfPath, statisticConfPath);
+	CaService cam(caConfig, configTree);
 
 	return EXIT_SUCCESS;
 }

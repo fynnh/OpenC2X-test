@@ -43,9 +43,7 @@ INITIALIZE_EASYLOGGINGPP
 
 struct gps_data_t GpsService::mGpsData;
 
-GpsService::GpsService(GpsConfig &config, string globalConfig, string loggingConf, string statisticConf) {
-	//TODO dynamic
-	string expName = "test";
+GpsService::GpsService(GpsConfig &config) {
 	try {
 		mGlobalConfig.loadConfig(GPS_CONFIG_NAME);
 	}
@@ -313,30 +311,16 @@ void sigHandler(int sigNum) {
 }
 
 
-int main(int argc, const char* argv[]) {
-	
-	string globalConfigPath = "/etc/openc2x/config.xml";
-	string configPath= "/etc/openc2x/gps/config.xml";
-	string loggingConfPath = "/etc/openc2x/gps/logging.conf";
-	string statisticConfPath = "/etc/openc2x/gps/statistics.conf";
-	
-	if(argc != 5) {
-		fprintf(stderr, "missing arguments: %s <globalConfig.xml> <gpsConfig.xml> <logging.conf> <statistics.conf> \n", argv[0]);
-	}else{
-		globalConfigPath = argv[1];
-		configPath= argv[2];
-		loggingConfPath = argv[3];
-		statisticConfPath = argv[4];
-	}
+int main(int argc, const char* argv[]) {	
 	GpsConfig config;
 	try {
-		config.loadConfigXML(configPath);
+		config.loadConfig();
 	}
 	catch (std::exception &e) {
 		cerr << "Error while loading config.xml: " << e.what() << endl << flush;
 		return EXIT_FAILURE;
 	}
-	GpsService gps(config, globalConfigPath, loggingConfPath, statisticConfPath);
+	GpsService gps(config);
 	gps.init();
 
 	signal(SIGINT, &sigHandler);

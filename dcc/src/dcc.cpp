@@ -55,10 +55,6 @@ string execProcess(string cmd_str){
 DCC::DCC(bool setUpWlan) : mStrand(mIoService) {
 
 	
-	string globalConfigPath = "/etc/openc2x/config.xml";
-	string configPath= "/etc/openc2x/dcc/config.xml";
-	string loggingConf = "/etc/openc2x/dcc/logging.conf";
-	string statisticConf = "/etc/openc2x/dcc/statistics.conf";
 	DccConfig config;
 	ptree pt = load_config_tree();
 

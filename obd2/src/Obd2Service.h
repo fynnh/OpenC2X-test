@@ -31,7 +31,6 @@
 #include "SerialPort.h"
 #include <common/utility/CommunicationSender.h>
 #include <common/utility/Constants.h>
-
 #include <common/utility/LoggingUtility.h>
 #include <common/buffers/obd2.pb.h>
 #include <boost/asio.hpp>
@@ -57,7 +56,7 @@ struct Obd2Config {
 	 */
 	int mFrequency;
 
-	void loadConfigXML(const std::string &filename) {
+	void loadConfig() {
 		
 		ptree pt = load_config_tree();
 		
@@ -75,7 +74,7 @@ struct Obd2Config {
  */
 class Obd2Service {
 public:
-	Obd2Service(Obd2Config &config, std::string globalConfig, std::string loggingConf, std::string statisticConf);
+	Obd2Service(Obd2Config &config);
 	~Obd2Service();
 	void init();
 

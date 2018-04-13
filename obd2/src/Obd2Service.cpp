@@ -36,8 +36,7 @@ using namespace std;
 
 INITIALIZE_EASYLOGGINGPP
 
-Obd2Service::Obd2Service(Obd2Config &config, string globalConfig, string loggingConf, string statisticConf) {
-
+Obd2Service::Obd2Service(Obd2Config &config) {
 	try {
 		mGlobalConfig.loadConfig(OBD2_CONFIG_NAME);
 	}
@@ -155,30 +154,16 @@ void Obd2Service::init() {
 }
 
 int main(int argc, const char* argv[]) {
-	
-	string globalConfigPath = "/etc/openc2x/config.xml";
-	string configPath= "/etc/openc2x/obd2/config.xml";
-	string loggingConfPath = "/etc/openc2x/obd2/logging.conf";
-	string statisticConfPath = "/etc/openc2x/obd2/statistics.conf";
-	
-	if(argc != 5) {
-		fprintf(stderr, "missing arguments: %s <globalConfig.xml> <obd2Config.xml> <logging.conf> <statistics.conf> \n", argv[0]);
-	}else{
-		globalConfigPath = argv[1];
-		configPath= argv[2];
-		loggingConfPath = argv[3];
-		statisticConfPath = argv[4];
-	}
 
 	Obd2Config config;
 	try {
-		config.loadConfigXML(configPath);
+		config.loadConfig();
 	}
 	catch (std::exception &e) {
 		cerr << "Error while loading config.xml: " << e.what() << endl << flush;
 		return EXIT_FAILURE;
 	}
-	Obd2Service obd2(config, globalConfigPath, loggingConfPath, statisticConfPath);
+	Obd2Service obd2(config);
 	obd2.init();
 
 	return 0;

@@ -33,12 +33,10 @@ using namespace std;
 
 INITIALIZE_EASYLOGGINGPP
 
-httpServer::httpServer(GlobalConfig globalConfig, string serverConfig, string loggingConf, string statisticConf) {
-
-	
+httpServer::httpServer(GlobalConfig globalConfig) {
 	mGlobalConfig = globalConfig;
 	try {
-		mLocalConfig.loadConfigXML(serverConfig);
+		mLocalConfig.loadConfig();
 	}
 	catch (std::exception &e) {
 		std::cerr << "Error while loading local config.xml: " << e.what() << std::endl;
@@ -302,21 +300,6 @@ std::string httpServer::myMac() {
 }
 
 int main(int argc, const char* argv[]){
-	
-	string globalConfigPath = "/etc/openc2x/config.xml";
-	string configPath= "/etc/openc2x/httpServer/config.xml";
-	string loggingConfPath = "/etc/openc2x/httpServer/logging.conf";
-	string statisticConfPath = "/etc/openc2x/httpServer/statistics.conf";	
-	
-	if(argc != 5) {
-		fprintf(stderr, "missing arguments: %s <globalConfig.xml> <serverConfig.xml> <logging.conf> <statistics.conf> \n", argv[0]);
-	}else{
-		globalConfigPath = argv[1];
-		configPath= argv[2];
-		loggingConfPath = argv[3];
-		statisticConfPath = argv[4];
-	}
-	
 	crow::SimpleApp app;
 	crow::logger::setLogLevel(crow::LogLevel::ERROR);	//ignore info logging in crow
 	GlobalConfig config;
@@ -331,7 +314,7 @@ int main(int argc, const char* argv[]){
 	LoggingUtility mLogger(HTTP_SERVER_CONFIG_NAME, HTTP_SERVER_MODULE_NAME, config.mLogBasePath, config.mExpName, config.mExpNo, pt);
 
 	//ldm requests
-	httpServer* server = new httpServer(config, configPath, loggingConfPath, statisticConfPath);
+	httpServer* server = new httpServer(config);
 
 	//CAM
 	CROW_ROUTE(app, "/request_cam")

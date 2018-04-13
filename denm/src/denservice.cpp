@@ -38,7 +38,7 @@ using namespace std;
 
 INITIALIZE_EASYLOGGINGPP
 
-DenService::DenService(string globalConfig, string loggingConf, string statisticConf) {
+DenService::DenService() {
 	try {
 		mGlobalConfig.loadConfig(DENM_CONFIG_NAME);
 	}
@@ -273,18 +273,7 @@ denmPackage::DENM DenService::convertAsn1toProtoBuf(DENM_t* denm) {
 
 int main(int argc, const char* argv[]) {
 	
-	string globalConfigPath = "/etc/openc2x/config.xml";
-	string loggingConfPath = "/etc/openc2x/denm/logging.conf";
-	string statisticConfPath = "/etc/openc2x/denm/statistics.conf";
-	
-	if(argc != 4) {
-		fprintf(stderr, "missing arguments: %s <globalConfig.xml> <logging.conf> <statistics.conf> \n", argv[0]);
-	}else{
-		globalConfigPath = argv[1];
-		loggingConfPath = argv[2];
-		statisticConfPath = argv[3];
-	}
-	DenService denm(globalConfigPath, loggingConfPath, statisticConfPath);
+	DenService denm;
 	denm.init();
 
 	return EXIT_SUCCESS;
