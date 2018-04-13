@@ -31,7 +31,8 @@ deploy:
   - provider: releases
     api_key:
       secure: MiezF0J72QZmu/S0EJEFLi4bus5O5ktzpzVZGW++btBA92NfukUo8uFiR7Dq7L8Qg4omrM2auq8SMsyyys8p+QXAI+iezgzR6UKnbD1tayNsgR+n/OL00cY24YGdAnyhyNkCk/vimit+bEqFqg/H9UrXpPh2yZBHtNucSWeB4kAb5RlQIw8ghPDYZXfEs73ONWVcUOBGFK7sT3Ij4pbqTvqOBZ6vkXevIYQpk/KQKkEt3kHe3ghqHC1LuMQ/Lw8UodYOvf+nE4RFtEi4mbD63c9QXM9n8boqq/M7iUU5MaiiUhPAcuGWp81FSW+8ZHhVFDYgOS9VrcGcycfSA8Fdew8DljwnedEKZzvsHQohPtu3Frc6BK/1KynT9aokCGbnK9DYDrtW6wJHl3vKSIWpkK6KlUKUYapkwywhcFo6klCp8/E9sRmSqanCrKAhObHXulzpR3of4lfhhsA6xck53rELcmxwpxYIPLxu2P/WOWca92h30riPpnO4voXRXZ7wtfVZIgPzYv2WvlWGb3APGvVzlr9+142q+UjkWkCmwOz7Qdug9Q4+735DUULyd7VpsOGBieAonk0+cIRndbRbbw+JCUcMKDJxmD/kfEjoANcRTX2Z8WkAmoHh+ysUepgFCbPncatyAtw8hV+m1ddgI8aUgL8ms3WHa+OjcH1oT0A=
-    file: openc2x-1.2-Linux.deb
+    file_glob: true
+    file: openc2x-*-Linux.deb
     skip_cleanup: true
     on:
       all_branches: true
