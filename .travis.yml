@@ -38,7 +38,7 @@ deploy:
     file: openc2x-*-Linux.deb
     skip_cleanup: true
     on:
-      all_branches: true
+      branch: master
   - provider: packagecloud
     repository: "openc2x"
     token:
