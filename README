@@ -3,8 +3,8 @@
 ----------------------------------------------------------------------------------------------------
 For latest updates on OpenC2X, visit http://www.ccs-labs.org/software/openc2x/
 
-On Ubuntu 16.04, follow the below mentioned steps to get OpenC2X up and running.
-For other OS users, we recommend you to setup a virtual box with Ubuntu 16.04.
+On Ubuntu 14.04, follow the below mentioned steps to get OpenC2X up and running.
+For other OS users, we recommend you to setup a virtual box with Ubuntu 14.04.
 
 OpenC2X source is organized in the tree structure like this:
 
@@ -33,49 +33,34 @@ Open a terminal and run the command:
 libgps-dev gpsd gpsd-clients libnl-3-200 libnl-3-dev libnl-genl-3-200 libnl-genl-3-dev sqlite3 \
 libsqlite3-dev tmux asn1c build-essential cmake doxygen
 
+    $ wget https://github.com/fynnh/uci/releases/download/20180413135149/uci-1.20180413135149-Linux.deb
+    $ sudo dpkg -i uci-1.20180413135149-Linux.deb
+    $ wget https://github.com/fynnh/libubox/releases/download/20180413135712/ubox-1.20180413135712-Linux.deb
+    $ sudo dpkg -i ubox-1.20180413135712-Linux.deb
 
 
 ----------------------------------------------------------------------------------------------------
-2)                           Generate source from .asn before compiling
+2)                                         Installation
 ----------------------------------------------------------------------------------------------------
-In the terminal, navigate to asn1 folder in common:
 
-    $ cd /path_to_openc2x/OpenC2X/common/asn1/
-    $ ./generate.sh
-
-
+    $ wget https://github.com/fynnh/OpenC2X-test/releases/download/20180413134059/openc2x-1.20180413134059-Linux.deb
+    $ sudo dpkg -i openc2x-1.20180413134059-Linux.deb
 
 ----------------------------------------------------------------------------------------------------
-3)                                         Compiling
+3)                                      Configurations
 ----------------------------------------------------------------------------------------------------
-In the terminal, navigate to your project folder and configure the project:
-
-    $ cd path_to_openc2x/OpenC2X/
-    $ mkdir build
-    $ cd build
-    $ cmake ..
-    $ make all
-
-
-
-----------------------------------------------------------------------------------------------------
-4)                                      Configurations
-----------------------------------------------------------------------------------------------------
-- The configuration of the modules can be changed in 'OpenC2X/<module>/config/'
-- Make sure to change the interface name and the stationId in 'common/config/config.xml'
-  as per your setup.
+- The configuration of the modules can be changed in '/etc/config/'
+- Make sure to change the interface name and the stationId as per your setup.
 - For setting up OpenC2X kernel, go through 'kernel-patches/README.txt'
 
 
 
 ----------------------------------------------------------------------------------------------------
-5)                                        Start OpenC2X
+4)                                        Start OpenC2X
 ----------------------------------------------------------------------------------------------------
 If you have followed the above steps, then you are ready to run OpenC2X.
-In the terminal, navigate to scripts:
 
-    $ cd path_to_openc2x/OpenC2X/scripts/
-    $ ./runOpenC2X.sh
+    $ runOpenC2X.sh
 
 For the GUI, open 'webSite/index.html' in your browser. You can also trigger denms from there.
 You can stop your experiment by running stopOpenC2X.sh in another terminal.
