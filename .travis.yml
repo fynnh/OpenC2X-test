@@ -28,7 +28,7 @@ script:
 - make package
 
 before_deploy:
-- git tag "${DATE}"
+- git tag "${DATE}" || true
 
 deploy:
   - provider: releases
